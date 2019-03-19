@@ -2,7 +2,6 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- 该文件编写mybatis中的mapper接口里面的方法提供对应的sql语句 -->
 <mapper namespace="com.edu.dao.StudentMapper">
 
 	<!-- 查询所有数据 -->
@@ -18,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		edu.student 
 	</select>
 	
-	<!-- 添加客户 -->
+	<!-- 添加商品 -->
 	<insert id="save" parameterType="com.edu.domain.Student">
 		INSERT INTO edu.student 
 			( 
@@ -78,5 +77,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</where>
 	</delete>
+	
+	<!-- 关联教师表 -->
+	<resultMap type="com.edu.domain.Student" id="studTeachResultMap">
+		<id column="id" property="id" />
+		<result column="name" property="name"/>
+		<result column="gender" property="gender"/>
+		<result column="classes" property="classes"/>
+		<result column="number" property="number"/>
+		<result column="telephone" property="telephone"/>
+		<result column="achievement" property="achievement"/>
+		<association property="teacher" javaType="com.edu.domain.Teacher">
+			<id column="teacher_id" property="id" />
+			<result column="name" property="name"/>
+			<result column="gender" property="gender"/>
+			<result column="classes" property="classes"/>
+			<result column="number" property="number"/>
+			<result column="telephone" property="telephone"/>
+		</association>
+	</resultMap>
+	
+	<select id="queryResultMap" resultMap="studTeachResultMap">
+		SELECT teacher.`gender`,teacher.`name`,student.* FROM student 
+		LEFT JOIN teacher ON teacher.`classes`=student.`classes`
+	</select>
 	
 </mapper>

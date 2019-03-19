@@ -78,4 +78,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</delete>
 	
+	<!-- 关联教师表 -->
+	<resultMap type="com.edu.domain.Student" id="studTeachResultMap">
+		<id column="id" property="id" />
+		<result column="name" property="name"/>
+		<result column="gender" property="gender"/>
+		<result column="classes" property="classes"/>
+		<result column="number" property="number"/>
+		<result column="telephone" property="telephone"/>
+		<result column="achievement" property="achievement"/>
+		<association property="teacher" javaType="com.edu.domain.Teacher">
+			<id column="teacher_id" property="id" />
+			<result column="name" property="name"/>
+			<result column="gender" property="gender"/>
+			<result column="classes" property="classes"/>
+			<result column="number" property="number"/>
+			<result column="telephone" property="telephone"/>
+		</association>
+	</resultMap>
+	
+	<select id="queryResultMap" resultMap="studTeachResultMap">
+		SELECT teacher.`gender`,teacher.`name`,student.* FROM student 
+		LEFT JOIN teacher ON teacher.`classes`=student.`classes`
+	</select>
+	
 </mapper>

@@ -1,6 +1,6 @@
 package com.edu.domain;
 
-public class Student
+public class Teacher
 {
 	private Integer id;
 	private String name;
@@ -8,8 +8,6 @@ public class Student
 	private String classes;
 	private String number;
 	private String telephone;
-	private Integer achievement;
-	private Teacher teacher;
 	public Integer getId()
 	{
 		return id;
@@ -58,27 +56,11 @@ public class Student
 	{
 		this.telephone = telephone;
 	}
-	public Integer getAchievement()
-	{
-		return achievement;
-	}
-	public void setAchievement(Integer achievement)
-	{
-		this.achievement = achievement;
-	}
-	public Teacher getTeacher()
-	{
-		return teacher;
-	}
-	public void setTeacher(Teacher teacher)
-	{
-		this.teacher = teacher;
-	}
 	@Override
 	public String toString()
 	{
-		return "Student [id=" + id + ", name=" + name + ", gender=" + gender + ", classes=" + classes + ", number=" + number + ", telephone="
-				+ telephone + ", achievement=" + achievement + "]";
+		return "Teacher [id=" + id + ", name=" + name + ", gender=" + gender + ", classes=" + classes + ", number=" + number + ", telephone="
+				+ telephone + "]";
 	}
 	
 }

@@ -17,7 +17,7 @@
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
-	<!-- 视图解析器:简化在Controller类编写的视图路径 -->
+	<!-- 视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 前缀 -->
 		<property name="prefix" value="/WEB-INF/jsp/"/>

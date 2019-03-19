@@ -36,4 +36,9 @@ public interface StudentMapper
 	 * @param id
 	 */
 	public void delete(Integer[] id);
+	
+	/**
+	 * 查询关联表,一般不用
+	 */
+	public List<Student> queryResultMap();
 }
